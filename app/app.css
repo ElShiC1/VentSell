@@ -7,9 +7,42 @@
 
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
-
+  overflow: hidden;
+  @apply bg-linear-to-t from-sky-500 to-indigo-500 dark:bg-gray-950;
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
   }
+  
+}
+
+@media(width < 1800px){
+  body, html{
+        font-size: 14px;
+  }
+}
+
+@media(width < 1700px){
+  body, html{
+        font-size: 12px;
+  }
+}
+
+::view-transition-group(animationHome){
+  animation-duration: .2s;
+}
+
+::view-transition-old(animationHome) {
+  animation: scale-out .0s ease-out forwards;
+}
+
+::view-transition-new(animationHome) {
+  animation: fade-in 0.2s reverse, scale-out .2s ease-in reverse;
+}
+
+@keyframes scale-out {
+  to {opacity: 0; transform: translate(120px, 0); }
+}
+
+@keyframes fade-in {
+  to { opacity: 1; }
 }
